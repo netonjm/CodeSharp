@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{235C22F7-4738-4C12-99F0-0D2F25F0E8C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HapSharp.Host</RootNamespace>
+    <AssemblyName>HapSharp.Host</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="M2Mqtt.Net">
+      <HintPath>..\libs\M2Mqtt\M2Mqtt.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CodeSession.cs" />
+    <Compile Include="Messages\MessageDelegate.cs" />
+    <Compile Include="Messages\GetMessageDelegate.cs" />
+    <Compile Include="Messages\OpenWindowMessage.cs" />
+    <Compile Include="Messages\ExtensionMessageDelegate.cs" />
+    <Compile Include="Services\ProcessService.cs" />
+    <Compile Include="Utils\MessageCommand.cs" />
+    <Compile Include="Utils\MessageDelegateMonitor.cs" />
+    <Compile Include="Utils\IMonitor.cs" />
+    <Compile Include="Utils\FileExtension.cs" />
+    <Compile Include="Services\MessageService.cs" />
+    <Compile Include="Code\VSCode.cs" />
+    <Compile Include="Code\VSConsole.cs" />
+    <Compile Include="Code\ExtensionWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Messages\" />
+    <Folder Include="Services\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Code\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
