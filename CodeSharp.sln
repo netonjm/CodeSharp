@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSharp.Host", "CodeSharp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSharp.Host.Console", "CodeSharp.Host.Console\CodeSharp.Host.Console.csproj", "{74DC410E-D3E6-4DEE-9474-84E34CDA6E9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSharp.Parser.Tests", "CodeSharp.Parser.Tests\CodeSharp.Parser.Tests.csproj", "{8B379248-B596-4019-8E6E-9D6992016060}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,5 +21,9 @@ Global
 		{74DC410E-D3E6-4DEE-9474-84E34CDA6E9E}.Debug|x86.Build.0 = Debug|x86
 		{74DC410E-D3E6-4DEE-9474-84E34CDA6E9E}.Release|x86.ActiveCfg = Release|x86
 		{74DC410E-D3E6-4DEE-9474-84E34CDA6E9E}.Release|x86.Build.0 = Release|x86
+		{8B379248-B596-4019-8E6E-9D6992016060}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8B379248-B596-4019-8E6E-9D6992016060}.Debug|x86.Build.0 = Debug|Any CPU
+		{8B379248-B596-4019-8E6E-9D6992016060}.Release|x86.ActiveCfg = Release|Any CPU
+		{8B379248-B596-4019-8E6E-9D6992016060}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
