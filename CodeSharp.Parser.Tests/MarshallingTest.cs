@@ -5,8 +5,6 @@ using System.Text;
 
 namespace CodeSharp.Parser.Tests
 {
-	
-
 	public static class StringExtensions
 	{
 		public static string RemoveComments (this string sender)
@@ -45,8 +43,6 @@ namespace CodeSharp.Parser.Tests
 
 		public static string RemoveFormat (this string sender)
 		{
-			
-
 			StringBuilder builder = new StringBuilder ();
 			foreach (var item in sender.Split (new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)) {
 				builder.AppendLine (item.Trim ().Trim ('\t'));
