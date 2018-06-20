@@ -5,6 +5,10 @@ using uPLibrary.Networking.M2Mqtt.Messages;
 
 public class MessageService
 {
+	const int DefaultConnectionRetries = 5;
+
+	public int ConnectionRetries { get; set; } = DefaultConnectionRetries;
+
 	public static MessageService Current {
 		get;
 		set;
@@ -39,9 +43,23 @@ public class MessageService
 		client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
 
 		string clientId = Guid.NewGuid ().ToString ();
-		monitor.WriteLine ($"[Net] Connecting to: {host} with clientId: {clientId}");
-		client.Connect (clientId);
-		monitor.WriteLine ($"[Net] Connected: {client.IsConnected}");
+
+		Exception lastConnectionException = null;
+		for (int i = 1; i <= ConnectionRetries && !client.IsConnected; i++) {
+			try {
+				monitor.WriteLine ($"[Net] Connecting to Broker ({host}) with client id: {clientId} ({i}/{ConnectionRetries}) ... ");
+				client.Connect (clientId);
+
+			} catch (Exception ex) {
+				monitor.WriteLine ($"[Net] Error connecting! Check if your Broker is up!");
+				lastConnectionException = ex;
+				System.Threading.Thread.Sleep (2000);
+			}
+		}
+
+		if (!client.IsConnected) {
+			throw lastConnectionException;
+		}
 	}
 
 	void client_MqttMsgPublishReceived (object sender, MqttMsgPublishEventArgs e)
