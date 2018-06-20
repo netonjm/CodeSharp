@@ -34,7 +34,7 @@ namespace CodeSharp.MessageDelegates
 			OnSendMessage (topic + "/" + ReceiveTopicNode, message + "/" + value);
 		}
 
-		void OnSendMessage (string topic, string message)
+		protected void OnSendMessage (string topic, string message)
 		{
 			SendMessage?.Invoke (this, new Tuple<string, string> (topic, message));
 		}
