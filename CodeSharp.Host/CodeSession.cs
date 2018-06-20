@@ -13,6 +13,11 @@ namespace CodeSharp
 
 		public string[] AllowedHosts { get; set; }
 
+		public int ConnectionRetries {
+			get => client.ConnectionRetries;
+			set => client.ConnectionRetries = value;
+		}
+
 		internal const int Port = 51826;
 		public List<MessageDelegate> MessageDelegates { get; private set; } = new List<MessageDelegate> ();
 
