@@ -20,6 +20,9 @@ namespace CodeSharp.Host.Terminal
 			var command = new SayHelloCommand ("extension.sayHello");
 			session.MessageDelegates.Add (command);
 
+			var xamlCompletionItemProvider = new XamlCompletionItemProvider ("completion");
+			session.MessageDelegates.Add (xamlCompletionItemProvider);
+
 			session.Start ();
 
 			Console.ReadKey ();

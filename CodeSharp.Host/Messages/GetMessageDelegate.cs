@@ -2,6 +2,15 @@
 
 namespace CodeSharp.MessageDelegates
 {
+	public abstract class GetSendMessageDelegate<T> : GetMessageDelegate<T>
+	{
+		protected GetSendMessageDelegate (string topic) : base (topic)
+		{
+		}
+
+		public abstract void OnSendMessageReceived (T value);
+
+	}
 
 	public abstract class GetMessageDelegate<T> : MessageDelegate
 	{
