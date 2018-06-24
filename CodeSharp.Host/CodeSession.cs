@@ -102,8 +102,13 @@ namespace CodeSharp
 				msg = MessageDelegates.FirstOrDefault (s => s.Topic == e.Topic);
 			}
 			if (msg != null) {
-				msg.RaiseMessageReceived (e.Topic, e.Message);
-				msg.RaiseMessageReceived (e.Topic, message);
+				try {
+					msg.RaiseMessageReceived (e.Topic, e.Message);
+					msg.RaiseMessageReceived (e.Topic, message);
+				} catch (Exception ex) {
+					monitor.WriteLine (string.Format ("Error processing MqttMsgPublishReceived -> topic: '{0}' message: '{1}'", e.Topic, e.Message));
+					monitor.WriteLine (ex.ToString ());
+				}
 			} else {
 				throw new NotImplementedException (e.Topic);
 			}
