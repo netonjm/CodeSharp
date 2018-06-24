@@ -35,14 +35,14 @@ namespace CodeSharp.MessageDelegates
 		public string Name { get; set; }
 	}
 
-	public abstract class CompletionItemProviderMessageDelegate : GetSendMessageDelegate<string>
+	public abstract class CompletionItemProviderMessageDelegate : MessageDelegate
 	{
 		public string Id {
 			get;
 			private set;
 		}
 		//readonly EventHandler eventHandler;
-		public CompletionItemProviderMessageDelegate (string id)
+		protected CompletionItemProviderMessageDelegate (string id)
 			: base ("completion")
 		{
 			this.Id = id;
@@ -58,7 +58,8 @@ namespace CodeSharp.MessageDelegates
 			var args = new CompletionItemArgs () { First = parsedMessage [0], Second = parsedMessage [1] };
 			var items = GetCompletionItems (args);
 			var result = GetParsedString (items);
-			this.OnSendMessage (topic + "/r", topic, true);
+
+			OnSendMessage (TopicReceive, result);
 		}
 
 		public string GetParsedString (CompletionItem[] completionItems) 
